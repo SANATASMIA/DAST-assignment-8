@@ -30,6 +30,8 @@ jobs:
             ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py \
             -t https://juice-shop.herokuapp.com \
             -r zap_report.html \
+            -J zap_report.json \
+            -w zap_report.md \
             -z "-config connection.ssl_cert_validation=false" || true
 
       - name: Upload ZAP Scan Report
@@ -38,3 +40,5 @@ jobs:
           name: zap-scan-report
           path: |
             zap-output/zap_report.html
+            zap-output/zap_report.json
+            zap-output/zap_report.md
